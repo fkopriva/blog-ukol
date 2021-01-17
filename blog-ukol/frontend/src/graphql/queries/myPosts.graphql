@@ -1,0 +1,13 @@
+query MyPosts {
+  myPosts {
+    id
+    title
+    parax
+    creator {
+      id
+      firstname
+      lastname
+    }
+    commentsLength
+  }
+}
