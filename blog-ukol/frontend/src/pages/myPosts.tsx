@@ -11,18 +11,27 @@ import {
     Tbody,
     Td
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import NextLink from "next/link";
 import Layout from "../components/Layout";
-import { useMyPostsQuery } from "../generated/graphql";
+import { useMyPostsQuery, useMeQuery } from "../generated/graphql";
 import { withUrqlClient } from 'next-urql';
 import { createUrqlClient } from '../utils/createUrqlClient';
 import EditDeletePostButtons from '../components/EditDeletePostButtons';
+import { isServer } from '../utils/isServer';
 
 interface myPostsProps {}
 
 const myPosts: React.FC<myPostsProps> = ({}) => {
-    const [{ data, fetching }] = useMyPostsQuery();
+    const [{ data: meData }] = useMeQuery();
+
+    const admin = meData!.me?.isAdmin as boolean;
+
+    const [{ data, fetching }] = useMyPostsQuery({
+        variables: {
+            admin: admin,
+        },
+    });
 
     if(!fetching && !data) {
         return <div>You got query failed for some reason</div>;

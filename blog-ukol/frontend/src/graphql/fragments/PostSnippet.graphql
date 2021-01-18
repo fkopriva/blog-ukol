@@ -8,6 +8,7 @@ fragment PostSnippet on Post {
     id
     firstname
     lastname
+    isAdmin
   }
   commentsLength
 }

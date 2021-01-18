@@ -13,7 +13,7 @@ const EditDeletePostButtons: React.FC<EditDeletePostButtonsProps> = ({ id, creat
     const [{ data: meData }] = useMeQuery();
     const [, deletePost] = useDeletePostMutation();
 
-    if (meData?.me?.id !== creatorId) {
+    if (meData?.me?.id !== creatorId && !meData?.me?.isAdmin) {
         return null;
     }
 

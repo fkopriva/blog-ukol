@@ -116,15 +116,19 @@ export class PostResolver {
     @Query(() => [Post])
     @UseMiddleware(isAuth)
     async myPosts(
+        @Arg("admin") admin: boolean,
         @Ctx() { req }: MyContext
     ): Promise<Post[]> {
-        const replacements: any[] = [req.session.userId];
+        let replacements: any[] = [];
+        if (!admin) {
+            replacements.push(req.session.userId);
+        }
         const posts = await getConnection().query(`
             select p.*,
             (select count(*) from comment where "postId" = p.id) "commentsLength"
             from post p
-            where p."creatorId" = $1
-        `,
+            ${!admin ? `where p."creatorId" = $1` : ""}
+        `, 
             replacements
         )
         return posts;

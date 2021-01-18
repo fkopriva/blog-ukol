@@ -37,6 +37,11 @@ export type QueryPostArgs = {
 };
 
 
+export type QueryMyPostsArgs = {
+  admin: Scalars['Boolean'];
+};
+
+
 export type QueryRelatedPostsArgs = {
   postId: Scalars['Int'];
 };
@@ -77,6 +82,7 @@ export type User = {
   lastname: Scalars['String'];
   email: Scalars['String'];
   image: Scalars['String'];
+  isAdmin: Scalars['Boolean'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
@@ -204,7 +210,7 @@ export type PostSnippetFragment = (
   & Pick<Post, 'id' | 'createdAt' | 'updatedAt' | 'title' | 'textSnippet' | 'commentsLength'>
   & { creator: (
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'firstname' | 'lastname'>
+    & Pick<User, 'id' | 'firstname' | 'lastname' | 'isAdmin'>
   ) }
 );
 
@@ -381,11 +387,13 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'firstname' | 'lastname'>
+    & Pick<User, 'id' | 'firstname' | 'lastname' | 'isAdmin'>
   )> }
 );
 
-export type MyPostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type MyPostsQueryVariables = Exact<{
+  admin: Scalars['Boolean'];
+}>;
 
 
 export type MyPostsQuery = (
@@ -474,6 +482,7 @@ export const PostSnippetFragmentDoc = gql`
     id
     firstname
     lastname
+    isAdmin
   }
   commentsLength
 }
@@ -647,6 +656,7 @@ export const MeDocument = gql`
     id
     firstname
     lastname
+    isAdmin
   }
 }
     `;
@@ -655,8 +665,8 @@ export function useMeQuery(options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'q
   return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
 };
 export const MyPostsDocument = gql`
-    query MyPosts {
-  myPosts {
+    query MyPosts($admin: Boolean!) {
+  myPosts(admin: $admin) {
     id
     title
     parax

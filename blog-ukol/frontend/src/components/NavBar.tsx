@@ -10,7 +10,8 @@ import {
     PopoverBody, 
     PopoverContent, 
     PopoverTrigger,
-    Image 
+    Image, 
+    PopoverHeader
 } from '@chakra-ui/react';
 import React from 'react';
 import NextLink from "next/link";
@@ -59,9 +60,11 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
                     </PopoverTrigger>
                     <PopoverContent>
                         <PopoverArrow />
+                        <PopoverHeader>Logged as {data.me.firstname + " " + data.me.lastname}</PopoverHeader>
                         <PopoverBody>
                             <Button 
                                 onClick={async () => {
+                                    await router.push("/");
                                     await logout();
                                     router.reload();
                                 }} 
@@ -80,7 +83,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
     return (
         <Flex zIndex={1} position="sticky" top={0} bg='#f8f9fa' p={4}>
             <Flex flex={1} m="auto" align="center" maxW="80%">
-                <Image src="../images/logo.png" alt="logo"/>
+                <Image src="../../public/images/logo.png" alt="logo"/>
                 <NextLink href="/">
                     <Link ml={6} onClick={async () => {
                         await router.push("/");

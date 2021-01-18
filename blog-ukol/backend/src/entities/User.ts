@@ -35,6 +35,10 @@ export class User extends  BaseEntity {
     @Column({ nullable: true })
     image: string;
 
+    @Field()
+    @Column({ type: "boolean", default: false})
+    isAdmin!: boolean;
+
     @Column()
     password!: string;
 

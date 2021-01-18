@@ -1,5 +1,5 @@
-query MyPosts {
-  myPosts {
+query MyPosts($admin: Boolean!) {
+  myPosts(admin: $admin) {
     id
     title
     parax
