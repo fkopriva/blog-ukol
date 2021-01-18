@@ -53,11 +53,11 @@ const Post = ({}) => {
                 <Box w="75%">
                     <Heading size="xl">{data.post.title}</Heading>
                     <Flex mb={4} mt={4}>
-                        <Text size="sm" mr={2}>{data.post.creator.firstname} {data.post.creator.lastname}</Text>
+                        <Text size="sm" mr={2} className="greyText">{data.post.creator.firstname} {data.post.creator.lastname}</Text>
                         <HStack>
                             <CircleIcon boxSize={2} />
                         </HStack>
-                        <Text ml={2}>
+                        <Text ml={2} className="greyText">
                             {new Date(parseInt(data.post.createdAt)).toLocaleDateString("en-US")}
                         </Text>
                     </Flex>

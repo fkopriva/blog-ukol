@@ -44,20 +44,20 @@ const Index = () => {
               <Box w="100%">
                 <Heading fontSize="xl" mb={4}>{p.title}</Heading> 
                 <Flex align="center">
-                  <Text mr={2}>{p.creator.firstname} {p.creator.lastname}</Text>
+                  <Text mr={2} className="grayText">{p.creator.firstname} {p.creator.lastname}</Text>
                   <HStack>
                     <CircleIcon boxSize={2} />
                   </HStack>
-                  <Text ml={2}>{new Date(parseInt(p.createdAt)).toLocaleDateString("en-US")}</Text>
+                  <Text ml={2} className="grayText">{new Date(parseInt(p.createdAt)).toLocaleDateString("en-US")}</Text>
                 </Flex>
                 <Text mt={4}>{p.textSnippet}</Text>
                 <Flex mt={4}>
                   <NextLink href="/post/[id]" as={`/post/${p.id}`}>
-                    <Link ml={2}>
+                    <Link ml={2} className="blueAnchorBody">
                       Read whole article
                     </Link>
                   </NextLink>
-                  <Text ml={4}>{p.commentsLength} comments</Text>
+                  <Text ml={4} className="grayText">{p.commentsLength} comments</Text>
                 </Flex>
               </Box>
             </Flex>

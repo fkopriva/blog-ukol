@@ -27,6 +27,7 @@ const EditDeletePostButtons: React.FC<EditDeletePostButtonsProps> = ({ id, creat
                     as={Link}
                     aria-label="Edit Post"
                     icon={<EditIcon />}
+                    className="actionsButton"
                 />
             </NextLink>
             <IconButton 
@@ -35,6 +36,7 @@ const EditDeletePostButtons: React.FC<EditDeletePostButtonsProps> = ({ id, creat
                 onClick={() => {
                     deletePost({ id });
                 }}
+                className="actionsButton"
             />
         </Flex>
     );

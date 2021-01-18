@@ -1,3 +1,24 @@
 .formattedTextArea {
   white-space: pre-wrap;
 }
+
+.blueButton {
+  background-color: #007bff !important;
+  color: #ffffff !important;
+}
+
+.grayText {
+  color: #6c757d !important;
+}
+
+.blueAnchorHeader {
+  color: #2b7efb !important;
+}
+
+.blueAnchorBody {
+  color: #007bff !important;
+}
+
+.actionsButton {
+  background-color: transparent !important;
+}

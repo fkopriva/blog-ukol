@@ -48,7 +48,7 @@ const EditPost = ({}) => {
                                 <Button  
                                     type="submit"
                                     isLoading={isSubmitting} 
-                                    colorScheme="blue"
+                                    className="blueButton"
                                 >
                                     Publish Article
                                 </Button>

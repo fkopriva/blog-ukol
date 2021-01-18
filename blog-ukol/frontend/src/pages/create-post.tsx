@@ -32,7 +32,7 @@ const CreatePost: React.FC<{}> = ({}) => {
                                 <Button  
                                     type="submit"
                                     isLoading={isSubmitting} 
-                                    colorScheme="blue"
+                                    className="blueButton"
                                 >
                                     Publish Article
                                 </Button>

@@ -71,7 +71,7 @@ const Register: React.FC<registerProps> = ({}) => {
                                 <Button 
                                     type="submit"
                                     isLoading={isSubmitting} 
-                                    colorScheme="blue"
+                                    className="blueButton"
                                 >Register</Button>
                             </Flex>
                         </Form>

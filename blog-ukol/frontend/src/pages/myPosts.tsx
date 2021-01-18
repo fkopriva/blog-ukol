@@ -11,14 +11,13 @@ import {
     Tbody,
     Td
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import NextLink from "next/link";
 import Layout from "../components/Layout";
 import { useMyPostsQuery, useMeQuery } from "../generated/graphql";
 import { withUrqlClient } from 'next-urql';
 import { createUrqlClient } from '../utils/createUrqlClient';
 import EditDeletePostButtons from '../components/EditDeletePostButtons';
-import { isServer } from '../utils/isServer';
 
 interface myPostsProps {}
 
@@ -26,6 +25,8 @@ const myPosts: React.FC<myPostsProps> = ({}) => {
     const [{ data: meData }] = useMeQuery();
 
     const admin = meData!.me?.isAdmin as boolean;
+    console.log("meData: ", meData);
+    console.log("admin: ", admin);
 
     const [{ data, fetching }] = useMyPostsQuery({
         variables: {
@@ -46,7 +47,7 @@ const myPosts: React.FC<myPostsProps> = ({}) => {
                     <Flex>
                         <Heading>My articles</Heading>
                         <NextLink href="/create-post">
-                            <Button as={Link} ml={5}>Create new article</Button>
+                            <Button as={Link} ml={5} className="blueButton">Create new article</Button>
                         </NextLink>
                     </Flex>
                     <Table variant="simple">

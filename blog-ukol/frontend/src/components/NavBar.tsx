@@ -35,10 +35,10 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
         body = (
             <>
                 <NextLink href="/login">
-                    <Link mr={2}>Log In</Link>
+                    <Link mr={2} className="blueAnchorHeader">Log In</Link>
                 </NextLink>
                 <NextLink href="/register">
-                    <Link>Register</Link>
+                    <Link className="blueAnchorHeader">Register</Link>
                 </NextLink>
             </>
         )
@@ -52,7 +52,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
                     }}>My Articles</Link>
                 </NextLink>
                 <NextLink href="/create-post">
-                    <Link mr={6}>Create Article</Link>
+                    <Link mr={6} className="blueAnchorHeader">Create Article</Link>
                 </NextLink>
                 <Popover>
                     <PopoverTrigger>
